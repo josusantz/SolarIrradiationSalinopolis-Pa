@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Virtual environments
+env/
+venv/
+solarenv/
+.venv/
+
+# Data files
+*.csv
+*.tsv
+*.parquet
+*.gzip
+*.pdf
+*.h5
+*.hdf5
+*.db
+*.sqlite
+*.xls
+*.xlsx
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Backup files
+*~
+*.bak
+*.tmp
