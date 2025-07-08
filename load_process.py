@@ -49,4 +49,4 @@ columns_translation = {
 
 df.rename(columns=columns_translation, inplace=True)
 print(df.columns)
-df.to_parquet('processeddata.parquet')
+df.to_parquet('data/processeddata.parquet')
