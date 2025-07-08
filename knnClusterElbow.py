@@ -37,22 +37,30 @@ print("Cabeçalho dos dados:")
 print(df_features.head())
 
 # 1. Escalonamento dos Dados
-# É crucial para que o algoritmo não seja enviesado por features com escalas diferentes.
+
 scaler = StandardScaler()
 features_scaled = scaler.fit_transform(df_features)
+
+
 # 2. Encontrar o número ideal de clusters com o Método do Cotovelo
 print("\nIniciando o Método do Cotovelo para encontrar o 'k' ideal...")
 
 inertia_values = []
-possible_k = range(2, 101) # Testaremos de 2 a 15 clusters
+possible_k = range(2, 101) 
 
 for k in possible_k:
     kmeans = KMeans(n_clusters=k, init='k-means++', n_init=10, random_state=42)
     kmeans.fit(features_scaled)
     inertia_values.append(kmeans.inertia_)
+    
     print(f"Inércia para k={k}: {kmeans.inertia_:.2f}")
+    df_inertia = pd.DataFrame({'k': possible_k, 'inertia': kmeans.inertia_})
+
+
+df_inertia.to_csv("inertiaClusterDWT")
 
 # 3. Plotar o gráfico do cotovelo
+
 plt.figure(figsize=(10, 6))
 plt.plot(possible_k, inertia_values, 'bo-')
 plt.xlabel('Número de Clusters (k)')
